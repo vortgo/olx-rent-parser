@@ -11,6 +11,18 @@ namespace App\Services;
 
 class NotifyService
 {
+    private $channelId;
+
+    /**
+     * @param mixed $channelId
+     * @return NotifyService
+     */
+    public function setChannelId($channelId)
+    {
+        $this->channelId = $channelId;
+        return $this;
+    }
+
     /**
      * Send message to skype
      *
@@ -20,7 +32,7 @@ class NotifyService
     {
         try {
             $botman = app('botman');
-            $channelId = config('services.botman.skype_chat_id');
+            $channelId = $this->channelId ? $this->channelId : config('services.botman.skype_chat_id');
             if (!$channelId)
                 return;
 
