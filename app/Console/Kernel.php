@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('parse:olx')->everyMinute();
-        $schedule->command('advice')->dailyAt('6:00');
+        $schedule->command('advice')->everyThirtyMinutes();
 
     }
 
