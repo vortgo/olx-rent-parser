@@ -18,7 +18,7 @@ Artisan::command('advice', function () {
     ];
     $advice = json_decode(file_get_contents($urls[rand(0, 1)]));
     $text = preg_replace("/&#?[a-z0-9]{2,8};/i", "", html_entity_decode($advice->text));
-    $message = "Совет на сегодня: $text";
+    $message = "Совет: $text";
     $notify = new \App\Services\NotifyService();
     $notify->setChannelId('19:54b970231658409680e96affbf2d2e73@thread.skype')->send($message);
 
